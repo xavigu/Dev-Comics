@@ -1,17 +1,15 @@
-import { Container, Text } from "@nextui-org/react";
 import Link from "next/link";
 
 export default function Header() {
   return (
-    <Container as="header" responsive display="flex" justify="space-between">
-      <div>
-        <Text small>next<Text>Comic Jokes</Text></Text>
-      </div>
+    <header className="flex justify-between items-center p-4 max-w-xl">
+      <h1 className="font-bold">next<span className="font-light">Comic Jokes</span></h1>
       <nav>
-        <Container as="ul" display="flex" direction="row" responsive>
-          <li><Link href='/'>Home</Link></li>
-        </Container>
+        <ul className="flex flex-row gap-2">
+          <li><Link href='/'><a className="text-xs font-semibold">Home</a></Link></li>
+          <li><Link href='/about'><a className="text-xs font-semibold">About</a></Link></li>
+        </ul>
       </nav>
-    </Container>
+    </header>
   )
 }
