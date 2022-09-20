@@ -39,7 +39,7 @@ export default function Home({ latestComics }) {
 // function to get latestComics and pass in props to the Home function
 export async function getStaticProps(context) {
   const files = await fs.readdir('./comics');
-  const latestComicsFiles = files.slice(-2, files.length); 
+  const latestComicsFiles = files.slice(-8, files.length); 
 
   const promisesReadFiles = latestComicsFiles.map(async (file) => {
     const content = await fs.readFile(`./comics/${file}`, 'utf8');
