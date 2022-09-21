@@ -18,11 +18,15 @@ export default function Comic({ id, img, alt, title, width, height, hasPrevious,
     <main>
       <section className="max-w-lg m-auto text-center">
         <h1 className="font-bold">{`Comic #${id} - ${title}`}</h1>
-        <Image layout="responsive" src={img} alt={alt} width={width} height={height}/>
+        <div className="max-w-xs m-auto p-4">
+          <Image layout="responsive" src={img} alt={alt} width={width} height={height}/>
+        </div>
+
         <p>{alt}</p>
-        <div className="flex justify-between p-4">
-          {hasPrevious && <Link href={`/comic/${prevId}`}><a className="text-gray-400">Previous</a></Link>}
-          {hasNext && <Link href={`/comic/${nextId}`}><a className="text-gray-400">Next</a></Link>}
+
+        <div className="flex justify-between m-4 font-bold">
+          {hasPrevious && <Link href={`/comic/${prevId}`}><a className="text-gray-400">◀️ Previous</a></Link>}
+          {hasNext && <Link href={`/comic/${nextId}`}><a className="text-gray-400">Next ▶️</a></Link>}
         </div>
       </section>
     </main>
