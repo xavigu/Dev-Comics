@@ -1,6 +1,7 @@
 import { Card, Container, Row, Text } from '@nextui-org/react'
 import Head from 'next/head'
-import Header from '../components/Header'
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 import styles from '../styles/Home.module.css'
 import fs from 'fs/promises'
 import Link from 'next/link'
@@ -8,6 +9,7 @@ import Image from 'next/image'
 
 export default function Home({ latestComics }) {
   return (
+    <>
     <div className={styles.container}>
       <Head>
         <title>Comics for developers</title>
@@ -15,6 +17,7 @@ export default function Home({ latestComics }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header/>
+
       <main className='text-center'>
         <h2 className='text-3xl font-bold mb-4'>Latest Comics</h2>
         <section className='grid grid-cols-1 gap-2 max-w-md m-auto sm:grid-cols-2'>
@@ -32,7 +35,10 @@ export default function Home({ latestComics }) {
           }
         </section>
       </main>
+
     </div>
+    <Footer/>
+    </>
   )
 }
 

@@ -13,7 +13,7 @@ export default function Header() {
       <nav>
         <ul className="flex flex-row gap-2">
           <li><Link href='/'><a className="text-xs font-semibold">Home</a></Link></li>
-          <li><Link href='/about'><a className="text-xs font-semibold">About</a></Link></li>
+          <li><Link href='/search'><a className="text-xs font-semibold">Search</a></Link></li>
         </ul>
       </nav>
     </header>
