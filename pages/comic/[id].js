@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { readFile, readdir, stat } from 'fs/promises'
 import { basename } from "path";
-import Header from "components/Header";
+import Layout from "components/Layout";
 
 export default function Comic({ id, img, alt, title, width, height, hasPrevious, hasNext, prevId, nextId}) {
   return <>
@@ -12,9 +12,7 @@ export default function Comic({ id, img, alt, title, width, height, hasPrevious,
       <meta name="description" content="Comics for developers" />
     </Head>
 
-    <Header/>
-
-    <main>
+    <Layout>
       <section className="max-w-lg m-auto text-center">
         <h1 className="font-bold">{`Comic #${id} - ${title}`}</h1>
         <div className="max-w-xs m-auto p-4">
@@ -28,7 +26,7 @@ export default function Comic({ id, img, alt, title, width, height, hasPrevious,
           {hasNext && <Link href={`/comic/${nextId}`}><a className="text-gray-400">Next ▶️</a></Link>}
         </div>
       </section>
-    </main>
+    </Layout>
   </>
 };
 
