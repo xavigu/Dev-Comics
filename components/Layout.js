@@ -5,7 +5,7 @@ export default function Layout({children}) {
     <>
       <Header/>
 
-      <main className='text-center'>
+      <main className='max-w-xl m-auto text-center'>
         {children}
       </main>
     </>
