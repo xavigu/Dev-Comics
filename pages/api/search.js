@@ -1,14 +1,9 @@
-import algoliasearch from 'algoliasearch/lite';
-
-const client = algoliasearch('KXMQLTBXDN', '5ff04310341a23f98877c2efefbc4f03');
-const index = client.initIndex('prod_comics');
-
+import { search } from 'services/search';
 
 export default async function handler(req, res) {
-  const { hits } = await index.search(req.query.q, {
-    attributesToRetrieve: ['id','title','img','alt'],
-    hitsPerPage: 5
-  });
+  const { query: { q = '' } } = req;
+
+  const { results } = await search({query: q});
   
-  return res.status(200).json(hits);
+  return res.status(200).json(results);
 }
