@@ -1,12 +1,14 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 
 export default function Header() {
   const [results, setResults] = useState([])
   const searchRef = useRef()
+  const {locale, locales} = useRouter()
 
   const getValue = () => searchRef.current?.value
-  
+
   const handleChange = () => {
     const q = getValue()
   
@@ -18,6 +20,9 @@ export default function Header() {
         setResults(searchResults)
       })
   }
+
+  const restOfLocales = locales.filter(l => l !== locale);
+
   return (
     <header className="flex justify-between p-4">
       <h1 className="font-bold">
@@ -57,6 +62,12 @@ export default function Header() {
             }
             </div>     
           </li>
+          <li>
+            <Link href='/' locale={restOfLocales[0]}>
+              <a className="text-xs font-semibold">{restOfLocales[0] === 'en' ?  '🇪🇸' : '🇺🇸'}</a>
+            </Link>
+          </li>
+
         </ul>
       </nav>
     </header>

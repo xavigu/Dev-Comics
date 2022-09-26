@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { createContext, useContext } from "react";
+import { createContext, useCallback, useContext } from "react";
 import es from '../translations/es.json';
 import en from '../translations/en.json';
 
@@ -8,7 +8,8 @@ const languages = { es, en };
 
 export function I18nProvider({children}){
   const { locale } = useRouter();
-  const translation = (key, ...args) => {
+
+  const translation = useCallback((key, ...args) => {
     let t = languages[locale][key];
     if (args.length === 0) return t;
 
@@ -16,7 +17,7 @@ export function I18nProvider({children}){
       t = t.replace(`\${${index + 1}}`, value);
     });
     return t;
-  }
+  },[locale]);
 
   return (
     <I18NContext.Provider value={{translation}}>
