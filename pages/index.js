@@ -5,8 +5,10 @@ import fs from 'fs/promises'
 import Link from 'next/link'
 import Image from 'next/image'
 import Layout from 'components/Layout'
+import { useI18N } from 'context/i18n'
 
 export default function Home({ latestComics }) {
+  const {translation: t} = useI18N();
   return (
     <>
     <div className={styles.container}>
@@ -15,7 +17,7 @@ export default function Home({ latestComics }) {
         <meta name="description" content="Comics for developers" />
       </Head>
       <Layout>
-        <h2 className='text-3xl font-bold mb-4'>Latest Comics</h2>
+        <h2 className='text-3xl font-bold mb-4'>{t('LATEST_COMICS')}</h2>
         <section className='grid grid-cols-1 gap-2 max-w-md m-auto sm:grid-cols-2'>
           {
             latestComics.map(comic => {
