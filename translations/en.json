@@ -1,3 +1,4 @@
 {
-  "LATEST_COMICS": "Latest Comics"
+  "LATEST_COMICS": "Latest Comics",
+  "SEARCH_RESULTS_TITLE": "Results for ${1} : ${2}"
 }

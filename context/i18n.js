@@ -8,8 +8,14 @@ const languages = { es, en };
 
 export function I18nProvider({children}){
   const { locale } = useRouter();
-  const translation = (key) => {
-    return languages[locale][key]
+  const translation = (key, ...args) => {
+    let t = languages[locale][key];
+    if (args.length === 0) return t;
+
+    args.forEach((value, index) => {
+      t = t.replace(`\${${index + 1}}`, value);
+    });
+    return t;
   }
 
   return (
