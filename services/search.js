@@ -1,6 +1,9 @@
 import algoliasearch from 'algoliasearch/lite';
 
-const client = algoliasearch('KXMQLTBXDN', '5ff04310341a23f98877c2efefbc4f03');
+const APP_ID = process.env.APP_ID;
+const API_KEY = process.env.API_KEY;
+
+const client = algoliasearch(APP_ID, API_KEY);
 const index = client.initIndex('prod_comics');
 
 // cache para reducir el numero de llamadas
