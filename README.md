@@ -39,3 +39,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 - Database where you can collect an array of your records with [Algolia](https://www.algolia.com)
   To install the client into our app use the comand `npm install algoliasearch -E`
+
+- Deploy from your master branch of your github repository in [Vercel](https://vercel.com)
