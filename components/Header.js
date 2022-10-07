@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
+import { useI18N } from "context/i18n";
 
 export default function Header() {
+  const {translation: t} = useI18N();
   const [results, setResults] = useState([])
   const searchRef = useRef()
   const {locale, locales} = useRouter()
@@ -34,7 +36,7 @@ export default function Header() {
       </h1>
       <nav>
         <ul className="flex flex-row gap-2">
-          <li><Link href='/'><a className="text-xs font-semibold">Home</a></Link></li>
+          <li><Link href='/'><a className="text-xs font-semibold">{t('HOME')}</a></Link></li>
           <li>
             <input className='px-4 py-1 text-xs border border-gray-400 rounded-3xl' ref={searchRef} type='search' onChange={handleChange} />
             <div className='relative z-10'>
