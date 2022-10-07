@@ -2,6 +2,7 @@ import { NextUIProvider } from '@nextui-org/react'
 import { I18nProvider } from 'context/i18n'
 import Head from 'next/head'
 import '../styles/globals.css'
+import "/node_modules/flag-icons/css/flag-icons.min.css"
 
 function MyApp({ Component, pageProps }) {
   return (

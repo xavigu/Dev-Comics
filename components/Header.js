@@ -64,8 +64,13 @@ export default function Header() {
           </li>
           <li>
             <Link href='/' locale={restOfLocales[0]}>
-              <a className="text-xs font-semibold">{restOfLocales[0] === 'en' ?  '🇪🇸' : '🇺🇸'}</a>
-            </Link>
+              <a className="text-xs font-semibold">{
+                restOfLocales[0] === 'en' ?  
+                <span class="fi fi-es"></span> : 
+                <span class="fi fi-us"></span>
+              }
+              </a>
+            </Link>       
           </li>
 
         </ul>
