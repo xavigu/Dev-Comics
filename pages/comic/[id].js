@@ -4,30 +4,34 @@ import Link from "next/link";
 import { readFile, readdir, stat } from 'fs/promises'
 import { basename } from "path";
 import Layout from "components/Layout";
+import { useI18N } from "context/i18n";
 
 export default function Comic({ id, img, alt, title, width, height, hasPrevious, hasNext, prevId, nextId}) {
-  return <>
-    <Head>
-      <title>Comics for developers</title>
-      <meta name="description" content="Comics for developers" />
-    </Head>
+  const {translation: t} = useI18N();
+  return (
+    <>
+      <Head>
+        <title>Comics for developers</title>
+        <meta name="description" content="Comics for developers" />
+      </Head>
 
-    <Layout>
-      <section className="max-w-lg m-auto text-center">
-        <h1 className="font-bold">{`Comic #${id} - ${title}`}</h1>
-        <div className="max-w-xs m-auto p-4">
-          <Image layout="responsive" src={img} alt={alt} width={width} height={height}/>
-        </div>
+      <Layout>
+        <section className="max-w-lg m-auto text-center">
+          <h1 className="font-bold">{`Comic #${id} - ${title}`}</h1>
+          <div className="max-w-xs m-auto p-4">
+            <Image layout="responsive" src={img} alt={alt} width={width} height={height}/>
+          </div>
 
-        <p>{alt}</p>
+          <p>{alt}</p>
 
-        <div className="flex justify-between m-4 font-bold">
-          {hasPrevious && <Link href={`/comic/${prevId}`}><a className="text-gray-400">◀️ Previous</a></Link>}
-          {hasNext && <Link href={`/comic/${nextId}`}><a className="text-gray-400">Next ▶️</a></Link>}
-        </div>
-      </section>
-    </Layout>
-  </>
+          <div className="flex justify-between m-4 font-bold">
+            {hasPrevious && <Link href={`/comic/${prevId}`}><a className="text-gray-400">◀️ {t('PREVIOUS')}</a></Link>}
+            {hasNext && <Link href={`/comic/${nextId}`}><a className="text-gray-400">{t('NEXT')} ▶️</a></Link>}
+          </div>
+        </section>
+      </Layout>
+    </>
+  )
 };
 
 // get the paths where you can get the props of that path
